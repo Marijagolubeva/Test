@@ -89,16 +89,12 @@ function addImageEvents(container, src, index) {
 // Загрузка новых изображений
 imageInput.addEventListener('change', function(event) {
     const files = event.target.files;
-    console.log('Files selected:', files.length); // Логирование количества файлов
+    console.log('Files selected:', files.length);
 
-    if (!files || files.length === 0) {
-        console.error('No files selected or input error');
-        return;
-    }
+    if (!files || files.length === 0) return;
 
     for (let file of files) {
         if (file.type.startsWith('image/')) {
-            console.log('Processing file:', file.name); // Логирование
             const reader = new FileReader();
             reader.onload = function(e) {
                 const src = e.target.result;
@@ -114,19 +110,15 @@ imageInput.addEventListener('change', function(event) {
                 imageContainer.classList.add('image-container');
                 imageContainer.appendChild(img);
                 addImageEvents(imageContainer, src, index);
+
+                // Добавляем в конец — порядок сохраняется
                 gallery.appendChild(imageContainer);
 
                 setTimeout(() => {
                     img.style.opacity = '1';
                 }, 100);
-                console.log('Image added to gallery:', src); // Логирование
-            };
-            reader.onerror = function() {
-                console.error('Error reading file:', file.name); // Логирование ошибки
             };
             reader.readAsDataURL(file);
-        } else {
-            console.warn('Skipped non-image file:', file.name); // Логирование
         }
     }
 });
