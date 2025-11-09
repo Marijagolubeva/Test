@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Базовый стиль фона, классы будут переключаться через JS */
+/* Анимации фона (оставляем как было) */
 .animated-bg-1 {
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffecd2, #f3c4fb);
     background-size: 200% 200%;
@@ -28,7 +28,6 @@ body {
     animation: gradientFlow3 15s ease infinite;
 }
 
-/* Анимации фона */
 @keyframes gradientFlow1 {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -52,6 +51,8 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+    width: 100%;
+    max-width: 1400px;
 }
 
 h1 {
@@ -72,6 +73,7 @@ h1 {
     font-size: 1em;
     transition: background 0.3s ease, transform 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
 .upload-btn:hover {
@@ -79,11 +81,13 @@ h1 {
     transform: scale(1.05);
 }
 
+/* ГАЛЕРЕЯ: СТРОГО 5 КОЛОНОК */
 #gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(5, 1fr); /* Ровно 5 колонок */
+    gap: 15px;
+    padding: 10px;
+    justify-items: center;
 }
 
 .image-container {
@@ -93,6 +97,8 @@ h1 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    width: 100%;
+    max-width: 250px;
 }
 
 .image-container img {
@@ -125,6 +131,7 @@ h1 {
     opacity: 1;
 }
 
+/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -164,11 +171,14 @@ h1 {
     to { transform: scale(1); opacity: 1; }
 }
 
-@media (max-width: 600px) {
+/* На мобильных — всё равно 5 колонок, но с прокруткой по горизонтали */
+@media (max-width: 1200px) {
     #gallery {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(5, 1fr);
+        overflow-x: auto;
+        padding-bottom: 10px;
     }
-    h1 {
-        font-size: 1.8em;
+    .container {
+        padding: 10px;
     }
 }
