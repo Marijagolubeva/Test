@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Анимации фона (оставляем как было) */
+/* АНИМАЦИИ ФОНА (оставляем) */
 .animated-bg-1 {
     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffecd2, #f3c4fb);
     background-size: 200% 200%;
@@ -52,7 +52,7 @@ body {
     text-align: center;
     padding: 20px;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
 }
 
 h1 {
@@ -81,11 +81,11 @@ h1 {
     transform: scale(1.05);
 }
 
-/* ГАЛЕРЕЯ: СТРОГО 5 КОЛОНОК */
+/* ГАЛЕРЕЯ: РОВНО 4 КОЛОНКИ */
 #gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Ровно 5 колонок */
-    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Ровно 4 колонки */
+    gap: 20px;
     padding: 10px;
     justify-items: center;
 }
@@ -171,14 +171,15 @@ h1 {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* На мобильных — всё равно 5 колонок, но с прокруткой по горизонтали */
-@media (max-width: 1200px) {
+/* На мобильных — 4 колонки с горизонтальной прокруткой */
+@media (max-width: 1000px) {
     #gallery {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         overflow-x: auto;
-        padding-bottom: 10px;
-    }
-    .container {
         padding: 10px;
+        gap: 15px;
+    }
+    .image-container {
+        max-width: 200px;
     }
 }
