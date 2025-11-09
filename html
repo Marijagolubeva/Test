@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша любовная галерея</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Наши моменты любви</h1>
+        <label for="imageInput" class="upload-btn">Добавить воспоминания</label>
+        <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+        <div id="gallery"></div>
+    </div>
+    <div id="modal" class="modal">
+        <span id="closeModal" class="close">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
